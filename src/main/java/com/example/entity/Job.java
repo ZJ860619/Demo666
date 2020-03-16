@@ -47,5 +47,79 @@ public class Job implements Serializable {
 
     private Integer state;
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
+    public Long getJid() {
+        return jid;
+    }
+
+    public void setJid(Long jid) {
+        this.jid = jid;
+    }
+
+    public String getJname() {
+        return jname;
+    }
+
+    public void setJname(String jname) {
+        this.jname = jname;
+    }
+
+    public String getEducationReq() {
+        return educationReq;
+    }
+
+    public void setEducationReq(String educationReq) {
+        this.educationReq = educationReq;
+    }
+
+    public String getTitleReq() {
+        return titleReq;
+    }
+
+    public void setTitleReq(String titleReq) {
+        this.titleReq = titleReq;
+    }
+
+    public String getDuty() {
+        return duty;
+    }
+
+    public void setDuty(String duty) {
+        this.duty = duty;
+    }
+
+    public String getTaskdescription() {
+        return taskdescription;
+    }
+
+    public void setTaskdescription(String taskdescription) {
+        this.taskdescription = taskdescription;
+    }
+
+    public Integer getPid() {
+        return pid;
+    }
+
+    public void setPid(Integer pid) {
+        this.pid = pid;
+    }
+
+    public Integer getYearsReq() {
+        return yearsReq;
+    }
+
+    public void setYearsReq(Integer yearsReq) {
+        this.yearsReq = yearsReq;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
 }

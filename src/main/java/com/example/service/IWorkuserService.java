@@ -13,4 +13,13 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IWorkuserService extends IService<Workuser> {
 
+    Workuser findList();
+
+    Workuser findac();
+
+    //更新用户信息
+    Integer modify(Workuser workuser);
+
+
+
 }

@@ -23,6 +23,8 @@ public class Workuser implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    private Integer userid;
+
     private String wuser;
 
     private String wpassword;
@@ -33,7 +35,58 @@ public class Workuser implements Serializable {
 
     private LocalDate wregtime;
 
-    private Long wid;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getWuser() {
+        return wuser;
+    }
+
+    public void setWuser(String wuser) {
+        this.wuser = wuser;
+    }
+
+    public String getWpassword() {
+        return wpassword;
+    }
+
+    public void setWpassword(String wpassword) {
+        this.wpassword = wpassword;
+    }
+
+    public String getWphone() {
+        return wphone;
+    }
+
+    public void setWphone(String wphone) {
+        this.wphone = wphone;
+    }
+
+    public String getWemail() {
+        return wemail;
+    }
+
+    public void setWemail(String wemail) {
+        this.wemail = wemail;
+    }
+
+    public LocalDate getWregtime() {
+        return wregtime;
+    }
+
+    public void setWregtime(LocalDate wregtime) {
+        this.wregtime = wregtime;
+    }
 
 
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
 }

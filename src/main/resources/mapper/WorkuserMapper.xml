@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.WorkuserMapper">
+
+    <select id="findWorkuser" resultType="Workuser">
+        SELECT 	wuser, wpassword, wphone, wemail, wregtime, userid FROM rec_workuser
+    </select>
+
+
+    <update id="updateWorkuser" parameterType="Workuser">
+    UPDATE rec_workuser SET wuser =#{wuser} , wpassword = #{wpassword} ,
+    wphone = #{wphone} , wemail = #{wemail}  WHERE wuser = #{wuser} ;
+    </update>
+
+</mapper>

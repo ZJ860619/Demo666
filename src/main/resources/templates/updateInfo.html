@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>简历编写</title>
+</head>
+<style>
+
+    body{ text-align: center}
+    input{
+        width: 167px;
+    }
+</style>
+<body>
+
+<form th:action="@{/worker/update}" action="/worker/update" method="post" th:object="${worker}">
+    <div>
+        <input type="hidden" th:value="${worker.wid}" name="wid">
+        <div style="border: 1px solid red;">
+            <span> <h2 style="color: orange;"> 基本信息</h2></span>
+            <div style="margin: 0 auto; width: 800px; height: 31px; border: 1px solid orange; ">
+                <div>
+                    <div style="float: left;">
+                        <label >姓名:</label>
+                        <input type="text"  name="wname" id="wname" th:value="${worker.wname}">
+                    </div>
+
+                    <div  style="float:right ;">
+                        <label>性别:</label>
+                        <select id="sex" name="sex">
+                            <option th:if="${worker.sex==1}" th:value="1">男</option>
+                            <option th:if="${worker.sex==0}" th:value="0">女</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label>出生日期:</label>
+                        <input type="text"  name="birth" id="birth"  th:value="${worker.birth}">
+                        <label>工作年限:</label>
+                        <input type="text"  name="years" id="years"  th:value="${worker.years}">
+                    </div>
+
+                </div>
+            </div>
+            <span> <h2 style="color: orange;"> 求职方向</h2></span>
+            <div style="margin: 0 auto; width: 810px; height: 31px; border: 1px solid orange; ">
+                <div>
+                    <div style="float: left;">
+                        <label >工作岗位:</label>
+                        <input type="text"  name="wtype" id="wtype"  th:value="${worker.wtype}">
+                    </div>
+
+                    <div  style="float: 100px;">
+                        <label>目前年收入:</label>
+                        <input type="text"  name="money" id="money" value="20">(万)
+                    </div>
+                </div>
+            </div>
+            <span> <h2 style="color: orange;"> 教育背景</h2></span>
+            <div style="margin: 0 auto; width: 810px; height: 31px; border: 1px solid orange; ">
+
+                <div  style="float: left;">
+                    <label>所学专业:</label>
+                    <input type="text"  name="major" id="major"  th:value="${worker.major}">
+                </div>
+
+                <div style="float: left;">
+                    <label >技能介绍:</label>
+                    <input  type="text" style="width: 220px;" name="skill" id="skill"  th:value="${worker.skill}">
+                </div>
+
+                <div style="float: right;">
+                    <label>教育地址:</label>
+                    <input type="text"  name="education" id="education"  th:value="${worker.education}">
+                </div>
+            </div>
+
+            <span> <h2 style="color: orange;"> 附加信息</h2></span>
+            <div style="margin: 0 auto; width: 810px; height: 31px; border: 1px solid orange; ">
+                <div>
+                    <div style="float: left;">
+                        <label > 简历标题:</label>
+                        <input type="text" style="width: 220px;"  name="title" id="title"  th:value="${worker.title}"><br>
+                    </div>
+
+                    <div  style="float: 100px;">
+                        <label>附件上传:</label>
+                        <input type="text" style="width: 220px;"  name="accessory" id="accessory"  value="目前没有附件"> <br>
+                    </div>
+                </div>
+            </div><br><br>
+            <input type="submit" value="修改"> <input type="reset" value="清空">
+        </div>
+        <a th:href="@{/worker/demo}" style="text-decoration: none;"> 返回中心</a>
+    </div>
+</form>
+</body>
+</html>

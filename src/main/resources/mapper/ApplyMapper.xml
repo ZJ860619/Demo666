@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ApplyMapper">
+<select id="selectDuoBiaoChaXun" resultMap="sMap">
+SELECT jname,applyDate,title FROM rec_apply r
+ INNER JOIN rec_job e ON r.jid=e.jid
+ INNER JOIN rec_worker c ON r.wid=c.wid  WHERE r.state IN (#{id})
+</select>
+
+    <resultMap id="sMap" type="Apply">
+        <id column="applynum" property="applynum"/>
+        <result column="applyDate" property="applyDate"/>
+        <result column="state" property="state"/>
+
+        <association property="job" javaType="Job">
+            <id column="jid" property="jid"/>
+            <result column="jname" property="jname"/>
+        </association>
+        
+        <association property="worker" javaType="Worker">
+            <id column="wid" property="wid"/>
+            <result column="title" property="title"/>
+        </association>
+    </resultMap>
+
+
+    <delete id="da">
+        delete from rec_apply where wid=#{wid}
+    </delete>
+
+</mapper>

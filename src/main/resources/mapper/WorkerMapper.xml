@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.WorkerMapper">
+
+    <select id="findListWorker" resultType="Worker">
+       SELECT wid, wname, sex, birth, wtype, title, skill, years, major, education, state, `isPrivate`
+	FROM
+	recruit.rec_worker
+    </select>
+
+
+    <update id="updateByQx" parameterType="Worker">
+
+    UPDATE rec_worker SET isPrivate=#{isPrivate} WHERE wid=#{wid}
+    </update>
+
+    <insert id="insertWorker" parameterType="Worker">
+    INSERT INTO rec_worker
+	(wname,sex,birth,wtype,
+	title,skill,years,major,education,
+	state,isPrivate,userid)
+	VALUES
+	(#{wname},#{sex},#{birth},#{wtype},#{title},#{skill},#{years},#{major},#{education},#{state},#{isPrivate},
+	#{userid});
+    </insert>
+
+    <select id="findWorkerInfoById" resultType="Worker">
+       SELECT wid, wname, sex, birth, wtype, title, skill, years, major, education, state, `isPrivate`
+	FROM rec_worker WHERE wid=#{wid}
+
+    </select>
+
+    <delete id="dw">
+        delete from rec_worker where wid=#{wid}
+    </delete>
+
+</mapper>

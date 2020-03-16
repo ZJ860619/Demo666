@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>简历管理</title>
+</head>
+<style>
+    ul{list-style: none;}
+    .clearfix li{margin: 30px;padding: 0px;float: left;}
+    .tit{clear: both;}
+    .table-row-cell tr th{width: 50px;font-size: 13px; color: #ccc;}
+
+</style>
+<body>
+<div>
+
+    <div>
+        <span style="margin: 33px; font-size: 25px;">简历中心</span>
+    </div>
+    <div>
+        <span style="margin: 300px;">
+            <a id="test" href="#">点击这里创建简历</a>
+        </span>
+    </div>
+    <div class="rbox">
+        <form>
+
+        <table class="table-row-cell">
+            <tr>
+                <th>简历名称</th>
+                <th>公开程度</th>
+                <th>操作</th>
+            </tr>
+            <tr th:each="zj:${workerList}">
+
+                <td style="width: 200px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;<a th:text="${zj.title}" href="updateInfo.html" th:href="@{/worker/details(workerId=${zj.wid})}">
+                </a></td>
+
+                <td><select id="qx" name="qx" th:if="${zj.isPrivate}==0">
+                    <option th:value="0">完全保密</option>
+                    <option th:value="1">对所有人公开</option>
+                </select>
+
+                    <select id="qx" name="qx"  th:if="${zj.isPrivate}==1">
+                        <option th:value="1" >对所有人公开</option>
+                        <option th:value="0">完全保密</option>
+                    </select>
+                    <input type="hidden" id="hidden" name="hidden" th:value="${zj.wid}"/>
+                </td>
+
+                <td width="100px">&nbsp;&nbsp;<a href="updateInfo.html" th:href="@{/worker/details(workerId=${zj.wid})}">编辑</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                        href="/worker/del/{id}" onclick="return del()" th:href="@{/worker/del/{id}(id=${zj.wid})}" th:value="${zj.wid}">删除
+                </a></td>
+
+            </tr>
+        </table>
+        <button><a th:href="@{/worker/home}">返回首页</a></button>
+        </form>
+    <script th:src="@{/jquery-1.12.4.js}" src="/jquery-1.12.4.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function del(data) {
+            if (confirm("您确定要删除吗？")) {
+                alert("删除成功");
+                window.location.href;
+                return true;
+            } else {
+                alert("删除失败");
+                return false;
+            }
+        }
+
+            $(function () {
+                $("#test").click(function () {
+                    $.ajax({type:"POST",
+                            url:"/demo/worker/count",
+                            dataType:"json",
+                            success:function (data) {
+                                // alert("ddddddddddddd");
+                                alert(data.num);
+                                if(data.num=="ok"){
+                                    // alert("aaa");
+                                    window.location.href="/demo/worker/index";
+                                }else if(data.num=="no"){
+                                    alert("每人最高投三分简历");
+                                    return false;
+                                }
+                            }
+                    });
+                })
+            });
+
+            $("#qx").change(function () {
+                alert("11");
+                var zz=($("#qx").val());
+                var zd=($("#hidden").val());
+                alert("id:"+zd);
+                alert(zz);
+                $.ajax({type:"POST",
+                    url:"/demo/worker/upqx",
+                    dataType:"json",
+                    data:{"id":zd,
+                            "qx":zz},
+                    success:function (data) {
+                        if(data.id=="ok"){
+                            window.location.href;
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    }
+                });
+
+            });
+    </script>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>申请详细</title>
+</head>
+<body>
+
+<center>
+<div th:each="test:${applyList}">
+    职位:<span th:text="${test.job.jname}">d</span>
+    申请时间:<span th:text="${test.applyDate}">d</span>
+    申请的简历:<span th:text="${test.worker.title}">ddd</span><br>
+    <span>河南异想科技有限公司</span> <span>郑州</span>
+
+
+    <span th:if="${test==null}" style="color: red;font-size: 20px;">目前还没有  请等待!!!</span>
+</div>
+    <br><br>
+    <a style="text-decoration: none;" th:href="@{/worker/home}">返回上一页</a>
+</center>
+
+</body>
+</html>

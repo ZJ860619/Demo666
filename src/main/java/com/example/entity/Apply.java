@@ -38,5 +38,67 @@ public class Apply implements Serializable {
 
     private Integer state;
 
+    private Job job;
 
+    private Worker worker;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Long getApplynum() {
+        return applynum;
+    }
+
+    public void setApplynum(Long applynum) {
+        this.applynum = applynum;
+    }
+
+    public Long getWid() {
+        return wid;
+    }
+
+    public void setWid(Long wid) {
+        this.wid = wid;
+    }
+
+    public Long getJid() {
+        return jid;
+    }
+
+    public void setJid(Long jid) {
+        this.jid = jid;
+    }
+
+    public LocalDate getApplyDate() {
+        return applyDate;
+    }
+
+    public void setApplyDate(LocalDate applyDate) {
+        this.applyDate = applyDate;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
+    public Job getJob() {
+        return job;
+    }
+
+    public void setJob(Job job) {
+        this.job = job;
+    }
+
+    public Worker getWorker() {
+        return worker;
+    }
+
+    public void setWorker(Worker worker) {
+        this.worker = worker;
+    }
 }

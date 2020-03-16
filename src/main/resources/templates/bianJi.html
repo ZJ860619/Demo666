@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改个人信息</title>
+</head>
+<style>
+
+    div{
+        margin: 0px;
+        text-align: center;
+    }
+</style>
+<body>
+<div style="border: orange;" th:object="${abc}">
+    <h2 style="color: orange;">修改个人信息</h2>
+    <form action="/workuser/update" th:action="@{/workuser/update}" method="post">
+        <input type="hidden" th:value="${abc.userid}"/>
+        用户名<input type="text" name="wuser" th:value="${abc.wuser}"/>   密码<input type="text" name="wpassword" th:value="${abc.wpassword}"/><br>
+        手机号<input type="text" name="wphone" th:value="${abc.wphone}"/>    邮箱<input type="text" name="wemail" th:value="${abc.wemail}"/><br><br>
+        你的账号注册时间为:<input type="text" name="dataTime" th:value="${abc.wregtime}" disabled/><br><br>
+        <input type="submit" value="提交"/><br><br>
+    </form>
+    <a th:href="@{/worker/home}" style="text-decoration: none;float: right;">返回上一级</a>
+</div>
+</body>
+</html>
